@@ -1,12 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { AngularFirestore } from 'angularfire2/firestore';
 
-/**
- * Generated class for the CarinfoPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @Component({
   selector: 'page-carinfo',
@@ -14,11 +10,55 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class CarinfoPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  public user: any = {
+    displayName: '',
+    email: '',
+    tel: '',
+    photoUrl: '',
+    gender: '',
+    licensePlate: '',
+    brand: '',
+    serie: '',
+    dateOfPurchased: '',
+    color: ''
+  };
+
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public afAuth: AngularFireAuth,
+    public afFirestore: AngularFirestore,
+  ) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad CarinfoPage');
+    this.getUserProfile();
+  }
+
+  getUserProfile() {
+    let uid = this.afAuth.auth.currentUser.uid;
+
+    this.afFirestore
+      .collection('users')
+      .doc(uid)
+      .valueChanges()
+      .subscribe(user => {
+        this.user = user;
+      })
+  }
+
+  async save() {
+    let uid = this.afAuth.auth.currentUser.uid;
+
+    try {
+      await this.afFirestore
+        .collection('users')
+        .doc(uid)
+        .set(this.user);
+    } catch (e) {
+      console.log(e);
+    }
+
   }
 
 }

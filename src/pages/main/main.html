@@ -1,7 +1,10 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Main</ion-title>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>หน้าหลัก</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -9,7 +12,7 @@
 
 <ion-content padding>
   <ion-list>
-    <div *ngFor="let category of categories" class="flex items-center mb-4 px-8 py-4 shadow" (click)="navigateContentList()"
+    <div *ngFor="let category of categories" class="flex items-center mb-4 px-8 py-4 shadow" (click)="navigateContentList(category)"
       [ngStyle]="{'background-color':category.color}">
       <img [src]="category.logo" class="w-32 h-32 mr-8 " alt=" ">
       <div class="ml-8 ">

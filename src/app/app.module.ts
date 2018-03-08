@@ -23,6 +23,8 @@ import { AngularFireDatabaseModule, AngularFireDatabase } from 'angularfire2/dat
 import { AngularFireAuthModule, AngularFireAuth } from 'angularfire2/auth';
 import { FacebookAuthProvider } from '@firebase/auth-types';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { EmergencyNumberPage } from '../pages/emergency-number/emergency-number';
+import { ContentDetailPage } from '../pages/content-detail/content-detail';
 
 
 var config = {
@@ -47,7 +49,9 @@ var config = {
     CarinfoPage,
     ProfilePage,
     RegisterPage,
-    SettingPage
+    SettingPage,
+    EmergencyNumberPage,
+    ContentDetailPage
   ],
   imports: [
     BrowserModule,
@@ -69,7 +73,9 @@ var config = {
     CarinfoPage,
     ProfilePage,
     RegisterPage,
-    SettingPage
+    SettingPage,
+    EmergencyNumberPage,
+    ContentDetailPage
   ],
   providers: [
     StatusBar,

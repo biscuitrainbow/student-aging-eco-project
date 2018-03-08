@@ -1,12 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the ProfilePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { AngularFireAuth } from 'angularfire2/auth';
+import { AngularFirestore } from 'angularfire2/firestore';
 
 @Component({
   selector: 'page-profile',
@@ -14,11 +9,57 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class ProfilePage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  public user: any = {
+    displayName: '',
+    email: '',
+    tel: '',
+    photoUrl: '',
+    gender: '',
+    licensePlate: '',
+    brand: '',
+    serie: '',
+    dateOfPurchased: '',
+    color: ''
+  };
+
+  public gender;
+
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public afAuth: AngularFireAuth,
+    public afFirestore: AngularFirestore,
+  ) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ProfilePage');
+    this.getUserProfile();
+  }
+
+  getUserProfile() {
+    let uid = this.afAuth.auth.currentUser.uid;
+
+    this.afFirestore
+      .collection('users')
+      .doc(uid)
+      .valueChanges()
+      .subscribe(user => {
+        this.user = user;
+      })
+  }
+
+  async save() {
+    let uid = this.afAuth.auth.currentUser.uid;
+
+    try {
+      await this.afFirestore
+        .collection('users')
+        .doc(uid)
+        .set(this.user);
+    } catch (e) {
+      console.log(e);
+    }
+
   }
 
 }

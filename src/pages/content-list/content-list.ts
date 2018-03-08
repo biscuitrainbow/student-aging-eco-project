@@ -1,12 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { ContentDetailPage } from '../content-detail/content-detail';
 
-/**
- * Generated class for the ContentListPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @Component({
   selector: 'page-content-list',
@@ -14,11 +9,15 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class ContentListPage {
 
+  public category = [];
+  public title = ''
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.category = navParams.get('payload');
+    this.title = navParams.get('title');
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ContentListPage');
+  showDetail(item) {
+    this.navCtrl.push(ContentDetailPage, { details: item.details ,title : item.text.en});
   }
 
 }

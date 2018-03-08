@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Platform } from 'ionic-angular';
+import { Platform, NavController, App } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -10,15 +10,16 @@ import { ContentListPage } from '../pages/content-list/content-list';
 import { FirebaseAuth } from '@firebase/auth-types';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { ProfilePage } from '../pages/profile/profile';
+import { CarinfoPage } from '../pages/carinfo/carinfo';
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage: any = LoginPage;
+  rootPage: any = MainPage;
 
 
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, afAuth: AngularFireAuth) {
+  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, public afAuth: AngularFireAuth, public app: App) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
@@ -26,10 +27,22 @@ export class MyApp {
       splashScreen.hide();
 
       afAuth.authState.subscribe(user => {
-        if (user) this.rootPage = ProfilePage;
+        if (user) this.rootPage = MainPage;
         else this.rootPage = LoginPage;
       })
     });
 
+  }
+
+  profile() {
+    this.app.getRootNav().push(ProfilePage);
+  }
+
+  setting() {
+
+  }
+
+  logout() {
+    this.afAuth.auth.signOut();
   }
 }

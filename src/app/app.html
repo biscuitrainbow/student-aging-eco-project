@@ -1,1 +1,33 @@
-<ion-nav [root]="rootPage"></ion-nav>
+<ion-menu [content]="content">
+    <ion-content>
+        <!-- <div *ngIf="!isAnonymous" class="flex py-8 px-4" style="background-color:#488aff">
+                <img class="rounded-full w-24 h-24 " src="assets/imgs/default-profile.png" />
+                <div class="flex flex-col justify-center px-4 text-white">
+                    <p class="font-bold">{{displayName}}</p>
+                    <p class="e-mail text-grey-lighter">{{email}}</p>
+                </div>
+            </div> -->
+        <ion-list no-lines>
+            <!-- <button menuClose="left" ion-item detail-none>
+                    <ion-icon name="person" item-left></ion-icon>
+                    Profile
+                </button> -->
+            <button menuClose="left" ion-item detail-none (click)="profile()">
+                <ion-icon name="list-box" item-left></ion-icon>
+                ข้อมูลส่วนตัว
+            </button>
+            <button menuClose="left" ion-item detail-none (click)="setting()">
+                <ion-icon name="settings" item-left></ion-icon>
+                ตั้งค่า
+            </button>
+            <button menuClose="left" ion-item detail-none (click)="logout()">
+                <ion-icon name="log-out" item-left></ion-icon>
+                ลงชื่อออก
+            </button>
+
+
+        </ion-list>
+    </ion-content>
+</ion-menu>
+
+<ion-nav #content [root]="rootPage"></ion-nav>

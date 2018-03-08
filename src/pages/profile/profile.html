@@ -1,7 +1,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>profile</ion-title>
+    <ion-title>ข้อมูลผู้ใช้</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -10,44 +10,43 @@
 <ion-content padding>
 
   <div inset class="flex justify-center items-center mb-4">
-    <img src="https://scontent.xx.fbcdn.net/v/t1.0-1/p100x100/11351206_870051393066885_3139796824165648382_n.jpg?oh=f03f780bf28a0a1336589401c4fbbcf2&oe=5B09C377"
-      class="bg-red w-48 h-48 rounded-full">
+    <img [src]="user.photoUrl" class="bg-red w-48 h-48 rounded-full">
 
   </div>
 
 
   <ion-item>
     <ion-label floating>ชื่อ - นามกุล</ion-label>
-    <ion-input type="text"></ion-input>
+    <ion-input type="text" [(ngModel)]="user.displayName"></ion-input>
   </ion-item>
 
   <ion-item>
     <ion-label floating>เบอร์โทรศัพท์</ion-label>
-    <ion-input type="text"></ion-input>
+    <ion-input type="text"  [(ngModel)]="user.tel"></ion-input>
   </ion-item>
 
   <ion-item>
     <ion-label floating>วัน / เดือน / ปีเกิด</ion-label>
-    <ion-input type="text"></ion-input>
+    <ion-input type="text" [(ngModel)]="user.birthday"></ion-input>
   </ion-item>
 
 
   <ion-list-header no-lines>
     เพศ
   </ion-list-header>
-  <div radio-group>
+  <div radio-group [(ngModel)]="user.gender">
     <ion-item>
       <ion-label>ชาย</ion-label>
-      <ion-radio checked="true" value="male"></ion-radio>
+      <ion-radio value="male"></ion-radio>
     </ion-item>
 
     <ion-item>
       <ion-label>หญิง</ion-label>
-      <ion-radio value="femail"></ion-radio>
+      <ion-radio  value="female"></ion-radio>
     </ion-item>
   </div>
 
   <ion-input class="mb-8" [hidden]="true"></ion-input>
-  <button ion-button color="primary" class="mt-4" block>บันทึก</button>
+  <button ion-button color="primary" class="mt-4" block (click)="save()">บันทึก</button>
 
 </ion-content>

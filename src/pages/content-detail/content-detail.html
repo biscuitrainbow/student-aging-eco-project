@@ -1,0 +1,19 @@
+<ion-header>
+
+    <ion-navbar>
+      <ion-title>
+        {{title}}
+      </ion-title>
+    </ion-navbar>
+  
+  </ion-header>
+  
+  
+  <ion-content padding>
+    <ion-list>
+      <div class=" w-full h-auto mb-8 shadow" *ngFor="let item of contents" (click)="showDetail(item)">
+        <img [src]="item" class="w-full h-full "
+          alt="">
+      </div>
+    </ion-list>
+  </ion-content>

@@ -32,27 +32,29 @@ export class LoginPage {
   async loginWithFacebook() {
     let provider = new firebase.auth.FacebookAuthProvider;
 
+    provider.addScope('user_birthday');
+
     provider.setCustomParameters({
       'display': 'popup'
     });
 
+
     try {
       let response = await this.afAuth.auth.signInWithPopup(provider);
-
       let uid = response.user.uid;
       let displayName = response.user.displayName;
       let email = response.user.email;
       let photoUrl = response.user.photoURL;
+      let birthday = response.additionalUserInfo.profile.birthday;
+      let gender = response.additionalUserInfo.profile.gender;
+      console.log(response);
 
-
-      let result = await this.afFirestore
-        .collection('users')
-        .doc(uid)
-        .set({
-          name: displayName,
-          email: email,
-          photoUrl: photoUrl
-        });
+      if (response.additionalUserInfo.isNewUser) {
+        let result = await this.afFirestore
+          .collection('users')
+          .doc(uid)
+          .set({ displayName, email, photoUrl, birthday: '', gender });
+      }
 
     } catch (e) {
       console.log(e);
