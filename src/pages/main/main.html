@@ -1,9 +1,3 @@
-<!--
-  Generated template for the MainPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
 
   <ion-navbar>
@@ -15,31 +9,14 @@
 
 <ion-content padding>
   <ion-list>
-    <div class="flex  items-center justify-between bg-teal mb-4 px-8 py-4">
-      <img src="https://freeiconshop.com/wp-content/uploads/edd/bulb-curvy-flat.png" class="w-32 h-32" alt="">
-      <div>
-        <p class="font-xl">EVENT</p>
-        <p>กิจกรรม</p>
+    <div *ngFor="let category of categories" class="flex items-center mb-4 px-8 py-4 shadow" (click)="navigateContentList()"
+      [ngStyle]="{'background-color':category.color}">
+      <img [src]="category.logo" class="w-32 h-32 mr-8 " alt=" ">
+      <div class="ml-8 ">
+        <p class="text-4xl ">{{category.text.en}}</p>
+        <p class="text-3xl font-light ">{{category.text.th}}</p>
       </div>
     </div>
-
-    <div class="flex  items-center justify-between bg-teal mb-4 px-8 py-4">
-        <img src="https://freeiconshop.com/wp-content/uploads/edd/bulb-curvy-flat.png" class="w-32 h-32" alt="">
-        <div>
-          <p class="font-xl">EVENT</p>
-          <p>กิจกรรม</p>
-        </div>
-      </div>
-
-      <div class="flex  items-center justify-between bg-teal mb-4 px-8 py-4">
-          <img src="https://freeiconshop.com/wp-content/uploads/edd/bulb-curvy-flat.png" class="w-32 h-32" alt="">
-          <div>
-            <p class="font-xl">EVENT</p>
-            <p>กิจกรรม</p>
-          </div>
-        </div>
-
-
   </ion-list>
 
 
