@@ -2,7 +2,7 @@
 
   <ion-navbar>
     <ion-title>
-      {{title}}
+      <!-- {{content.text}} -->
     </ion-title>
   </ion-navbar>
 
@@ -10,10 +10,14 @@
 
 
 <ion-content padding>
+  <ion-fab right bottom>
+    <button ion-fab color="danger" (click)="pickImage()"  >
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
   <ion-list>
-    <div class="w-full mb-8 shadow" *ngFor="let item of category.subCategory" (click)="showDetail(item)">
-      <img [src]="item.logo" class="w-full h-full "
-        alt="">
+    <div class="w-full mb-8 shadow" *ngFor="let item of contents | async" (click)="showDetail(item)">
+      <img [src]="item.imgURL" class="w-full h-full " alt="">
     </div>
   </ion-list>
 </ion-content>

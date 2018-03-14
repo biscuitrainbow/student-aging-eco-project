@@ -10,7 +10,7 @@
 
 <ion-content padding>
   <ion-list>
-    <button ion-item *ngFor="let number of numbers" (click)="itemSelected(item)">
+    <button ion-item *ngFor="let number of numbers" (click)="call(number)">
       <div class="flex">
         <span class="text-red text-4xl font-bold w-1/3">{{ number.number }}</span>
         <span>{{number.title}}</span>

@@ -10,7 +10,7 @@
 <ion-content padding>
 
   <div inset class="flex justify-center items-center mb-4">
-    <img [src]="user.photoUrl" class="bg-red w-48 h-48 rounded-full">
+    <img [src]="user.photoURL" class="bg-red w-48 h-48 rounded-full">
 
   </div>
 
@@ -22,7 +22,7 @@
 
   <ion-item>
     <ion-label floating>เบอร์โทรศัพท์</ion-label>
-    <ion-input type="text"  [(ngModel)]="user.tel"></ion-input>
+    <ion-input type="text" [(ngModel)]="user.tel"></ion-input>
   </ion-item>
 
   <ion-item>
@@ -42,7 +42,7 @@
 
     <ion-item>
       <ion-label>หญิง</ion-label>
-      <ion-radio  value="female"></ion-radio>
+      <ion-radio value="female"></ion-radio>
     </ion-item>
   </div>
 

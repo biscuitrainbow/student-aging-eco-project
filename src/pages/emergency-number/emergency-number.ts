@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { CallNumber } from '@ionic-native/call-number';
 
 @Component({
   selector: 'page-emergency-number',
@@ -29,11 +30,15 @@ export class EmergencyNumberPage {
       number: '1192'
     }
   ]
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public phone: CallNumber
+  ) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad EmergencyNumberPage');
+  call(item) {
+    this.phone.callNumber(item.number,true);
   }
 
 }

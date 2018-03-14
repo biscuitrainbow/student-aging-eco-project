@@ -12,12 +12,11 @@
 
 <ion-content padding>
   <ion-list>
-    <div *ngFor="let category of categories" class="flex items-center mb-4 px-8 py-4 shadow" (click)="navigateContentList(category)"
+    <div *ngFor="let category of categories | async" class="flex items-center mb-4 px-8 py-4 shadow" (click)="navigateContentList(category)"
       [ngStyle]="{'background-color':category.color}">
-      <img [src]="category.logo" class="w-32 h-32 mr-8 " alt=" ">
+      <img [src]="category.img" class="w-32 h-32 mr-8 " alt=" ">
       <div class="ml-8 ">
-        <p class="text-4xl ">{{category.text.en}}</p>
-        <p class="text-3xl font-light ">{{category.text.th}}</p>
+        <p class="text-4xl ">{{category.text}}</p>
       </div>
     </div>
   </ion-list>
