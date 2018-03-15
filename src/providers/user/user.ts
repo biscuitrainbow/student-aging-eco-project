@@ -54,6 +54,7 @@ export class UserProvider {
           brand: '',
           serie: '',
           color: '',
+          isAdmin: false,
           dateOfPurchased: '',
           ...additionalDetail
         });
@@ -85,7 +86,7 @@ export class UserProvider {
       })
 
     return userData;
-
   }
+
 }
 

@@ -10,14 +10,38 @@
 
 
 <ion-content padding>
-  <ion-fab right bottom>
-    <button ion-fab color="danger" (click)="pickImage()"  >
+
+  <div class="flex justify-center w-full h-full items-center" *ngIf="isLoading">
+    <div class="lds-roller">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+
+  <div class="flex justify-center w-full h-full items-center" *ngIf="isEmpty">
+    <p class="text-4xl">ไม่มีข้อมูลในหมวดนี้</p>
+  </div>
+
+  <ion-fab right bottom *ngIf="isAdmin">
+    <button ion-fab color="danger" (click)="pickImage()">
       <ion-icon name="add"></ion-icon>
     </button>
   </ion-fab>
-  <ion-list>
-    <div class="w-full mb-8 shadow" *ngFor="let item of contents | async" (click)="showDetail(item)">
-      <img [src]="item.imgURL" class="w-full h-full " alt="">
-    </div>
+
+  <ion-list [reorder]="isAdmin" (ionItemReorder)="reorderItems($event)" no-lines no-padding *ngIf="!isLoading">
+    <ion-item-sliding class="content-item" *ngFor="let item of contents | async">
+      <ion-item class="w-full mb-8 shadow" (click)="showDetail(item)">
+        <img [src]="item.imgURL" class="w-full h-full " alt="">
+      </ion-item>
+      <ion-item-options side="right">
+        <button ion-button color="danger" (click)="delete(item)">Delete</button>
+      </ion-item-options>
+    </ion-item-sliding>
   </ion-list>
 </ion-content>

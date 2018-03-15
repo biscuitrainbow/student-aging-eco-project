@@ -23,6 +23,26 @@ button:focus {
     outline: 0 !important;
 }
 
+.text-input-md{
+    font-size: 2.5rem;
+}
+
+.label-md[stacked], .label-md[floating]{
+    font-size: 2.5rem;
+}
+
+.label-md{
+    font-size: 2rem;
+}
+
+
+.button-md{
+    font-size: 2rem;
+    padding:20px;
+}
+
+
+
 app-page {
     font-family: 'Kanit', sans-serif;
 }

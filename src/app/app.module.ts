@@ -33,6 +33,8 @@ import { Camera, CameraOptions } from '@ionic-native/camera';
 import { CameraProvider } from '../providers/camera/camera';
 import { ContentProvider } from '../providers/content/content';
 import { CallNumber } from '@ionic-native/call-number';
+import { OtherInfoPage } from '../pages/other-info/other-info';
+import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player';
 
 var config = {
   apiKey: "AIzaSyBwV_CETiZb_USfiZUbGpwK_kfV1XNb3lU",
@@ -58,7 +60,8 @@ var config = {
     RegisterPage,
     SettingPage,
     EmergencyNumberPage,
-    ContentDetailPage
+    ContentDetailPage,
+    OtherInfoPage
   ],
   imports: [
     BrowserModule,
@@ -83,7 +86,8 @@ var config = {
     RegisterPage,
     SettingPage,
     EmergencyNumberPage,
-    ContentDetailPage
+    ContentDetailPage,
+    OtherInfoPage
   ],
   providers: [
     StatusBar,
@@ -96,6 +100,7 @@ var config = {
     CallNumber,
     CameraProvider,
     ContentProvider,
+    YoutubeVideoPlayer
   ]
 })
 export class AppModule { }

@@ -81,11 +81,13 @@
     <plugin name="cordova-plugin-splashscreen" spec="^5.0.2" />
     <plugin name="cordova-plugin-ionic-webview" spec="^1.1.16" />
     <plugin name="cordova-plugin-ionic-keyboard" spec="^2.0.5" />
+    <preference name="YouTubeDataApiKey" value="AIzaSyDfJGy9S5um7UgawIzf6In1YaZHFj2b87Y" />
     <allow-navigation href="http://192.168.2.105:8100" />
     <plugin name="cordova-plugin-facebook4" spec="^1.9.1">
         <variable name="APP_ID" value="1802833253278020" />
         <variable name="APP_NAME" value="biwarp" />
     </plugin>
-    <engine name="android" spec="6.3.0" />
     <plugin name="mx.ferreyra.callnumber" spec="~0.0.2" />
+    <engine name="android" spec="6.3.0" />
+    <plugin name="cordova-plugin-youtube-video-player" spec="^1.0.6" />
 </widget>

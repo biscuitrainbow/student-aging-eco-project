@@ -6,6 +6,7 @@ import { EmergencyNumberPage } from '../emergency-number/emergency-number';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
 import { ContentProvider } from '../../providers/content/content';
+import { OtherInfoPage } from '../other-info/other-info';
 
 @Component({
   selector: 'page-main',
@@ -33,6 +34,7 @@ export class MainPage {
       if (item.destination.page === 'EmergencyNumberPage') this.navCtrl.push(EmergencyNumberPage, { content: item });
       else if (item.destination.page === 'ContentListPage') this.navCtrl.push(ContentListPage, { content: item });
       else if (item.destination.page === 'CarinfoPage') this.navCtrl.push(CarinfoPage, { content: item });
+      else if (item.destination.page === 'OtherInfoPage') this.navCtrl.push(ContentListPage, { content: item });
 
       return;
     }

@@ -22,7 +22,7 @@ export class ContentProvider {
     return picture;
   }
 
-  async store(url, path) {
+  async store(url, path, content?) {
     const timestamp = moment().format('X');
 
     let result = await this.afFirestore.doc(path).collection(CONTENTS_COLLECTION).add({ imgURL: url, timestamp: timestamp });
@@ -54,6 +54,18 @@ export class ContentProvider {
       });
 
     return categories;
+  }
+
+  async deleteContent(item) {
+    await this.afFirestore.doc(item.path).delete();
+  }
+
+  async swapOrder(from, to) {
+    const fromTimestamp = from.timestamp;
+    const toTimestamp = to.timestamp;
+
+    await this.afFirestore.doc(from.path).update({ timestamp: toTimestamp })
+    await this.afFirestore.doc(to.path).update({ timestamp: fromTimestamp })
   }
 
 
