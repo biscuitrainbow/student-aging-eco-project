@@ -19,12 +19,12 @@ export class UserProvider {
 
 
   public async signInWithFacebook() {
-    const response = await this.facebook.login(['email', 'user_birthday', 'public_profile'])
+    const response = await this.facebook.login(['email', 'public_profile'])
     const facebookCredential = firebase.auth.FacebookAuthProvider.credential(response.authResponse.accessToken);
     const user = await this.afAuth.auth.signInWithCredential(facebookCredential);
-    const additionalDetail = await this.facebook.api("/" + response.authResponse.userID + "/?fields=gender,birthday", ["user_birthday"]);
+    // const additionalDetail = await this.facebook.api("/" + response.authResponse.userID + "/?fields=gender,birthday", ["user_birthday"]);
 
-    await this.createUserData(user, additionalDetail)
+    await this.createUserData(user)
 
     return user;
   }
@@ -39,7 +39,7 @@ export class UserProvider {
     return user;
   }
 
-  public async createUserData(user, additionalDetail) {
+  public async createUserData(user) {
     const userRef = await this.getUserDataReference(user);
 
     if (!userRef.exists) {
@@ -56,7 +56,6 @@ export class UserProvider {
           color: '',
           isAdmin: false,
           dateOfPurchased: '',
-          ...additionalDetail
         });
 
       return userData;

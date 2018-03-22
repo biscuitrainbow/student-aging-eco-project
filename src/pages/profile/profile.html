@@ -25,11 +25,11 @@
     <ion-input type="text" [(ngModel)]="user.tel"></ion-input>
   </ion-item>
 
+
   <ion-item>
     <ion-label floating>วัน / เดือน / ปีเกิด</ion-label>
-    <ion-input type="text" [(ngModel)]="user.birthday"></ion-input>
+    <ion-datetime displayFormat="DD/MMM/YYYY" [(ngModel)]="user.birthday"></ion-datetime>
   </ion-item>
-
 
   <ion-list-header no-lines>
     เพศ

@@ -10,6 +10,10 @@ export class EmergencyNumberPage {
 
   public numbers = [
     {
+      title: 'อุบัติเหตุและเจ็บป่วยฉุกเฉิน',
+      number: '1669'
+    },
+    {
       title: 'แจ้งเหตุสาธารณะภัย',
       number: '198'
     },

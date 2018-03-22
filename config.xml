@@ -88,6 +88,6 @@
         <variable name="APP_NAME" value="biwarp" />
     </plugin>
     <plugin name="mx.ferreyra.callnumber" spec="~0.0.2" />
-    <engine name="android" spec="6.3.0" />
     <plugin name="cordova-plugin-youtube-video-player" spec="^1.0.6" />
+    <engine name="android" spec="6.3.0" />
 </widget>
